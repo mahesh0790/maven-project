@@ -158,6 +158,25 @@
           <artifactId>jetty-maven-plugin</artifactId>
           <version>8.0.0.M1</version>
         </plugin>
+               <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>1.4.0</version>
+                        <configuration>
+                                 <repository>mahesh0790/${project.artifactId}</repository>
+                                 <tag>${project.version}</tag>
+                                 </configuration>
+                        <executions>
+                                 <execution>
+                                          <id>default</id>
+                                          <phase>install</phase>
+                                          <goals>
+                                                   <goal>build</goal>
+                                                   <goal>push</goal>
+                                          </goals>
+                                          </execution>
+                                 </executions>
+                </plugin>
       </plugins>
     </pluginManagement>
   </build>
