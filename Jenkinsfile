@@ -24,7 +24,7 @@ pipeline{
         stage("push the image into dockerhub"){
             steps{
                 withDockerRegistry(credentialsId: 'docker-registry', url: 'https://index.docker.io/v1/') {
-            sh "docker push mahesh0790/cd"
+            sh "docker push mahesh0790/${JOB_NAME}"
 }
             
             }
