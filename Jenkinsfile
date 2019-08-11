@@ -32,7 +32,7 @@ pipeline{
         stage("ssh connection to ec2"){
             steps{
                 sshagent(['ssh-docker']) {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}:${BUILD_NUMBER} "
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}:${BUILD_NUMBER} docker run -d -p 8080:8080 mahesh0790/${JOB_NAME}:${BUILD_NUMBER}"
 }
             }
             
