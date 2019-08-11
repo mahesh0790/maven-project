@@ -18,7 +18,7 @@ pipeline{
         }
         stage("build the docker image"){
             steps{
-                sh "docker build -t mahesh0790/cd ."
+                sh "docker build -t mahesh0790/${JOB_NAME} ."
             }
         }
         stage("push the image into dockerhub"){
@@ -31,9 +31,8 @@ pipeline{
         }
         stage("ssh connection to ec2"){
             steps{
-            def dockerRun = 'docker pull mahesh0790/cd'
                 sshagent(['ssh-docker']) {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 ${dockerRun}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}"
 }
             }
             
