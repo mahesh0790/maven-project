@@ -18,7 +18,6 @@ pipeline{
         }
         stage("build the docker image"){
             steps{
-                sh "docker rmi mahesh0790/${JOB_NAME}"
                 sh "docker build -t mahesh0790/${JOB_NAME}:${BUILD_NUMBER} ."
             }
         }
