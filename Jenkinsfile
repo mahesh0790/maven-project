@@ -1,8 +1,5 @@
 pipeline{
     agent any
-     triggers {
-        cron('* * * * *')
-    }
     stages{
         stage("scm checkout"){
             steps{
