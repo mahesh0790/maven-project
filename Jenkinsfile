@@ -18,7 +18,7 @@ pipeline{
         }
         stage("build the docker image"){
             steps{
-                sh "docker build -t mahesh0790/${JOB_NAME}:${BUILD_NUMBER} ."
+                sh "docker build -t mahesh0790/${JOB_NAME}:${BUILD_NUMBER} ./docker"
             }
         }
         stage("push the image into dockerhub"){
