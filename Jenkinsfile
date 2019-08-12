@@ -26,8 +26,6 @@ pipeline{
             steps{
                 withDockerRegistry(credentialsId: 'docker-registry', url: 'https://index.docker.io/v1/') {
             sh "docker push mahesh0790/${JOB_NAME}:${BUILD_NUMBER}"
-}
-            
             }
         }
         stage("ssh connection to ec2"){
@@ -43,7 +41,6 @@ pipeline{
             sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker run -d -p 8080:8080 mahesh0790/${JOB_NAME}:${BUILD_NUMBER} "
 }
             }
-            
         }
     }
 }
