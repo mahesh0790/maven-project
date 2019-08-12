@@ -18,6 +18,7 @@ pipeline{
         }
         stage("build the docker image"){
             steps{
+                sh "cp /var/lib/jenkins/workspace/ci_cd_push_pull_docker/webapp/target/webapp.war /home/mahesh/Videos/Practices/maven-project/docker"
                 sh "docker build -t mahesh0790/${JOB_NAME}:${BUILD_NUMBER} ./docker"
             }
         }
@@ -32,7 +33,13 @@ pipeline{
         stage("ssh connection to ec2"){
             steps{
                 sshagent(['ssh-docker']) {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}:${BUILD_NUMBER} docker run -p 8080:8080 mahesh0790/${JOB_NAME}:${BUILD_NUMBER}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}:${BUILD_NUMBER} "
+}
+            }
+            stage("ssh connection to ec2"){
+            steps{
+                sshagent(['ssh-docker']) {
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker run -d -p 8080:8080 mahesh0790/${JOB_NAME}:${BUILD_NUMBER} "
 }
             }
             
