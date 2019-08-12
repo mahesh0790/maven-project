@@ -36,6 +36,7 @@ pipeline{
             sh "ssh -o StrictHostKeyChecking=no ubuntu@52.66.81.4 docker pull mahesh0790/${JOB_NAME}:${BUILD_NUMBER} "
 }
             }
+        }
             stage("ssh connection to ec2"){
             steps{
                 sshagent(['ssh-docker']) {
