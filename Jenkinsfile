@@ -28,6 +28,7 @@ pipeline{
             sh "docker push mahesh0790/${JOB_NAME}:${BUILD_NUMBER}"
             }
         }
+        }
         stage("ssh connection to ec2"){
             steps{
                 sshagent(['ssh-docker']) {
@@ -45,6 +46,6 @@ pipeline{
     }
         }
     }
-}
+
 
 
