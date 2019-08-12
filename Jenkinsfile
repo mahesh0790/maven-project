@@ -18,7 +18,7 @@ pipeline{
         }
         stage("build the docker image"){
             steps{
-                sh "sudo cp /var/lib/jenkins/workspace/ci_cd_push_pull_docker/webapp/target/webapp.war /home/mahesh/Videos/Practices/maven-project/docker"
+                sh "echo newmahesh | sudo  -S cp /var/lib/jenkins/workspace/ci_cd_push_pull_docker/webapp/target/webapp.war /home/mahesh/Videos/Practices/maven-project/docker"
                 sh "docker build -t mahesh0790/${JOB_NAME}:${BUILD_NUMBER} ./docker"
             }
         }
